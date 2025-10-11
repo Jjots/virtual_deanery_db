@@ -1,11 +1,9 @@
--- Таблица Тип мероприятия
 CREATE TABLE EventType (
     event_type_id INTEGER PRIMARY KEY,
     type_name VARCHAR NOT NULL,
     importance_level INTEGER
 );
 
--- Таблица Мероприятие
 CREATE TABLE Event (
     event_id INTEGER PRIMARY KEY,
     event_name VARCHAR NOT NULL,
@@ -19,16 +17,14 @@ CREATE TABLE Event (
     auto_reminder BOOLEAN DEFAULT false
 );
 
--- Таблица Создатель мероприятия
 CREATE TABLE EventCreator (
+    creator_id SERIAL PRIMARY KEY,
     teacher_id INTEGER,
     event_id INTEGER,
     creation_date DATE DEFAULT CURRENT_DATE,
-    can_modify BOOLEAN DEFAULT true,
-    PRIMARY KEY (teacher_id, event_id)
+    can_modify BOOLEAN DEFAULT true
 );
 
--- Таблица Уведомление
 CREATE TABLE Notification (
     notification_id INTEGER PRIMARY KEY,
     title VARCHAR NOT NULL,
@@ -39,7 +35,6 @@ CREATE TABLE Notification (
     sent_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Таблица Дедлайн
 CREATE TABLE Deadline (
     deadline_id INTEGER PRIMARY KEY,
     deadline_date DATE NOT NULL,
@@ -50,7 +45,6 @@ CREATE TABLE Deadline (
     discipline_id INTEGER
 );
 
--- Таблица Результат мероприятия
 CREATE TABLE EventResult (
     result_id INTEGER PRIMARY KEY,
     event_id INTEGER,

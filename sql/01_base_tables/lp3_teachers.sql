@@ -1,10 +1,3 @@
--- Создаём схему, если её нет
-CREATE SCHEMA IF NOT EXISTS lp3_teachers;
-
--- Устанавливаем контекст на эту схему
-SET search_path TO lp3_teachers;
-
--- Создание таблиц
 CREATE TABLE academic_degree (
     degree_id INTEGER PRIMARY KEY,
     title VARCHAR(100),
@@ -24,7 +17,7 @@ CREATE TABLE teacher (
     teacher_patronymic VARCHAR(100),
     teacher_birth_date DATE,
     teacher_gender VARCHAR(10),
-    teacher_email VARCHAR(100) UNIQUE,
+    teacher_email VARCHAR(100),
     teacher_phone VARCHAR(20),
     position_id INTEGER,
     degree_id INTEGER,
@@ -33,6 +26,7 @@ CREATE TABLE teacher (
 );
 
 CREATE TABLE teacher_load (
+    load_id SERIAL PRIMARY KEY,
     teacher_id INTEGER,
     discipline_id INTEGER,
     semester_id INTEGER,
